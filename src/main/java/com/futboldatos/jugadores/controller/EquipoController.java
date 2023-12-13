@@ -19,6 +19,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
@@ -74,6 +75,8 @@ public class EquipoController {
     @PostMapping ("/jugador/crear") 
     public ResponseEntity <String> crearJugador(@RequestBody Jugador jugador) {
         
+        jugador.setGolesPorPJ(0);
+        
         jugadorServ.crearJugador(jugador);
         return new ResponseEntity<>("El jugador fue creado exitosamente", HttpStatus.OK);
     }
@@ -91,11 +94,24 @@ public class EquipoController {
         
     }
    
-    @PutMapping ("/equipos/modificar")
-    public ResponseEntity <String> editarEquipo(@RequestBody Equipo equipo) {
+    @PutMapping ("/jugador/modificar/{idOriginal}")
+    public Jugador editarJugador(@PathVariable Long idOriginal,
+            @RequestParam(required=false, name = "nombreCompleto") String nombreNuevo,
+            @RequestParam(required=false, name = "posicion") String posicionNuevo,
+            @RequestParam(required=false, name = "edad") int edadNuevo,
+            @RequestParam(required=false, name = "partidosJugados")int pjNuevo,
+            @RequestParam(required=false, name = "goles")int golesNuevo,
+            @RequestParam(required=false, name = "asistencias")int asistNuevo,
+            @RequestParam(required=false, name = "golesPorPJ")double golesPorPJNuevo,
+            @RequestParam(required=false, name= "asistPorPJ") double asistPorPJNuevo,
+            @RequestParam(required=false, name = "añoDebut") int añoDebutNuevo,
+            @RequestParam(required=false, name = "nacionalidad")String nacionalidadNuevo,
+            @RequestParam(required=false, name = "partidosSeleccion")int partidosSeleccionNuevo) {
+
+        jugadorServ.editarJugador(idOriginal,nombreNuevo, posicionNuevo, edadNuevo, pjNuevo, golesNuevo, asistNuevo, 0, 0, añoDebutNuevo, nacionalidadNuevo, partidosSeleccionNuevo);
+        Jugador jugador = jugadorServ.buscarJugador(idOriginal);   
+        return jugador;
         
-        equipoServ.crearEquipo(equipo);
-        return new ResponseEntity<>("El equipo fue creado exitosamente", HttpStatus.OK);
     }
     
     /*   

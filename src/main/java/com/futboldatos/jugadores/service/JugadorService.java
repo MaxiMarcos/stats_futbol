@@ -30,7 +30,7 @@ public class JugadorService implements IJugadorService {
 
     @Override
     public void crearJugador(Jugador jugador) {
-        
+   
         jugadorRepo.save(jugador);
     }
 
@@ -48,23 +48,26 @@ public class JugadorService implements IJugadorService {
     }
 
     @Override
-    public void editarJugador(Long idOriginal, String nombreNuevo, String posicionNuevo, int edadNuevo, int pjNuevo, int golesNuevo, int asistNuevo, int golesPjNuevo,
-                             int asistPjNuevo, int añoDebutNuevo, String nacionalidadNuevo, int PartidosSeleccionNuevo) {
+    public void editarJugador(Long idOriginal, String nombreNuevo, String posicionNuevo, int edadNuevo, int pjNuevo, int golesNuevo, int asistNuevo, double golesPorPJNuevo,
+                             double asistPorPJNuevo, int añoDebutNuevo, String nacionalidadNuevo, int PartidosSeleccionNuevo) {
         
         Jugador jugadorNuevo = this.buscarJugador(idOriginal);
         
+        double promJug = this.promedioGolesPorPartido(golesNuevo, pjNuevo);
+       
         jugadorNuevo.setNombreCompleto(nombreNuevo);
         jugadorNuevo.setEdad(edadNuevo);
         jugadorNuevo.setPosicion(posicionNuevo);
         jugadorNuevo.setPartidosJugados(pjNuevo);
         jugadorNuevo.setGoles(golesNuevo);
         jugadorNuevo.setAsistencias(asistNuevo);
-        jugadorNuevo.setGolesPorPJ(golesPjNuevo);
-        jugadorNuevo.setAsistPorPJ(asistPjNuevo);
+        jugadorNuevo.setGolesPorPJ(promJug);
+        jugadorNuevo.setAsistPorPJ(asistPorPJNuevo);
         jugadorNuevo.setAñoDebut(añoDebutNuevo);
         jugadorNuevo.setNacionalidad(nacionalidadNuevo);
         jugadorNuevo.setPartidosSeleccion(PartidosSeleccionNuevo);
         
+        this.crearJugador(jugadorNuevo);
     }
 
     @Override
@@ -72,5 +75,12 @@ public class JugadorService implements IJugadorService {
         Jugador jugador = jugadorRepo.findById(id).orElse(null);
         return jugador;
     }
-    
+
+    @Override
+    public double promedioGolesPorPartido(int goles, int partidosJugados) {
+    if (partidosJugados == 0) {
+        return 0;
+    } return (double) goles / partidosJugados;
 }
+}
+    

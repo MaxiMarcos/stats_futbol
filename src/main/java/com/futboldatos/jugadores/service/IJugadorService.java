@@ -17,9 +17,10 @@ public interface IJugadorService {
    public void crearJugador(Jugador Jugador);
    public boolean borrarJugador(Long id);
    public void editarJugador(Long idOriginal, String nombreNuevo, String posicionNuevo, int edadNuevo, int pjNuevo, int golesNuevo, int asistNuevo,
-                            int golesPjNuevo, int asistPjNuevo, int añoDebutNuevo, String nacionalidadNuevo, int PartidosSeleccionNuevo);
+                            double golesPorPJNuevo, double asistPorPJNuevo, int añoDebutNuevo, String nacionalidadNuevo, int partidosSeleccionNuevo);
    public Jugador buscarJugador(Long id);
- 
+   public double promedioGolesPorPartido(int goles, int partidosJugados);
+    
     
 }
 
