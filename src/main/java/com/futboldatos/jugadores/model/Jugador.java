@@ -12,7 +12,7 @@ import lombok.Setter;
 @Entity
 public class Jugador {
     @Id
-    @GeneratedValue(strategy=GenerationType.SEQUENCE)
+    @GeneratedValue(strategy=GenerationType.IDENTITY)
     private Long id_jug;
     private String nombreCompleto;
     private String posicion;

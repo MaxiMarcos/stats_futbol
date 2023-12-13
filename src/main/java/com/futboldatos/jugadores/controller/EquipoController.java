@@ -4,7 +4,7 @@
  */
 package com.futboldatos.jugadores.controller;
 
-import com.futboldatos.jugadores.dto.JugadorDTO;
+// import com.futboldatos.jugadores.dto.JugadorDTO;
 import com.futboldatos.jugadores.model.Equipo;
 import com.futboldatos.jugadores.model.Jugador;
 import com.futboldatos.jugadores.service.IEquipoService;
@@ -92,12 +92,13 @@ public class EquipoController {
     }
    
     @PutMapping ("/equipos/modificar")
-    public void editarEquipo(@RequestBody Equipo equipo) {
+    public ResponseEntity <String> editarEquipo(@RequestBody Equipo equipo) {
         
         equipoServ.crearEquipo(equipo);
+        return new ResponseEntity<>("El equipo fue creado exitosamente", HttpStatus.OK);
     }
     
-           
+    /*   
     @GetMapping ("/estadistica/{id}") // lo que podrá ver el cliente
     public JugadorDTO devolverDTO(@PathVariable Long id) {
         
@@ -119,6 +120,6 @@ public class EquipoController {
         
         
         return jugDto;  
-    }
+    } */
     
 }
