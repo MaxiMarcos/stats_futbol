@@ -4,10 +4,73 @@
  */
 package com.futboldatos.jugadores.service;
 
+
+import com.futboldatos.jugadores.model.Jugador;
+import com.futboldatos.jugadores.repository.IJugadorRepository;
+import java.util.List;
+import java.util.Optional;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
 /**
  *
  * @author Usuario
  */
-public class JugadorService {
+@Service
+public class JugadorService implements IJugadorService {
+
+    @Autowired
+    private IJugadorRepository jugadorRepo; 
+    
+    @Override
+    public List<Jugador> traerJugadores() {
+        
+        return jugadorRepo.findAll();
+    }
+
+    @Override
+    public void crearJugador(Jugador jugador) {
+        
+        jugadorRepo.save(jugador);
+    }
+
+    @Override
+    public boolean borrarJugador(Long id) {
+        Optional <Jugador> optionalJugador = jugadorRepo.findById(id);
+        
+        if (optionalJugador.isPresent()) {
+        jugadorRepo.deleteById(id);
+        return true;
+    } else {
+        return false;
+    }
+   
+    }
+
+    @Override
+    public void editarJugador(Long idOriginal, String nombreNuevo, String posicionNuevo, int edadNuevo, int pjNuevo, int golesNuevo, int asistNuevo, int golesPjNuevo,
+                             int asistPjNuevo, int añoDebutNuevo, String nacionalidadNuevo, int PartidosSeleccionNuevo) {
+        
+        Jugador jugadorNuevo = this.buscarJugador(idOriginal);
+        
+        jugadorNuevo.setNombreCompleto(nombreNuevo);
+        jugadorNuevo.setEdad(edadNuevo);
+        jugadorNuevo.setPosicion(posicionNuevo);
+        jugadorNuevo.setPartidosJugados(pjNuevo);
+        jugadorNuevo.setGoles(golesNuevo);
+        jugadorNuevo.setAsistencias(asistNuevo);
+        jugadorNuevo.setGolesPorPJ(golesPjNuevo);
+        jugadorNuevo.setAsistPorPJ(asistPjNuevo);
+        jugadorNuevo.setAñoDebut(añoDebutNuevo);
+        jugadorNuevo.setNacionalidad(nacionalidadNuevo);
+        jugadorNuevo.setPartidosSeleccion(PartidosSeleccionNuevo);
+        
+    }
+
+    @Override
+    public Jugador buscarJugador(Long id) {
+        Jugador jugador = jugadorRepo.findById(id).orElse(null);
+        return jugador;
+    }
     
 }

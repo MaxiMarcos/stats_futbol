@@ -11,8 +11,8 @@ public interface IEquipoService {
     
    public List<Equipo> traerEquipos();
    public void crearEquipo(Equipo equipo);
-   public void borrarEquipo(Long id);
-   public void editarEquipo(Equipo equipo);
+   public boolean borrarEquipo(Long id);
+   public void editarEquipo(Long idOriginal, String nombreNuevo, String paisNuevo, List jugadoresNuevos);
    public Equipo buscarEquipo(Long id);
    
     
