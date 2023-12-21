@@ -1,4 +1,4 @@
-# Proyecto Datos de fútbol
+# Datos en el fútbol
 
 Este es un proyecto (el primero que hago con Spring Boot) que, tendrá como funcionalidad principal, gestionar datos y estadísticas de jugadores de futbol.
 
