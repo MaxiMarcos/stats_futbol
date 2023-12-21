@@ -1,6 +1,7 @@
 
 package com.futboldatos.jugadores.service;
 
+import com.futboldatos.jugadores.dto.JugadorDTO;
 import com.futboldatos.jugadores.model.Equipo;
 import com.futboldatos.jugadores.repository.IEquipoRepository;
 import java.util.List;
@@ -55,5 +56,6 @@ public class EquipoService implements IEquipoService{
         
         this.crearEquipo(equipo);
     }
+
     
 }

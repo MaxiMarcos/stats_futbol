@@ -31,6 +31,10 @@ public class JugadorService implements IJugadorService {
     @Override
     public void crearJugador(Jugador jugador) {
    
+        double asistenciasPJ = this.promedioAsistenciasPorPartido(jugador.getAsistencias(), jugador.getPartidosJugados());
+        jugador.setAsistPorPJ(asistenciasPJ);
+        double golesPJ = this.promedioGolesPorPartido(jugador.getGoles(), jugador.getPartidosJugados());
+        jugador.setGolesPorPJ(golesPJ);
         jugadorRepo.save(jugador);
     }
 
@@ -53,7 +57,8 @@ public class JugadorService implements IJugadorService {
         
         Jugador jugadorNuevo = this.buscarJugador(idOriginal);
         
-        double promJug = this.promedioGolesPorPartido(golesNuevo, pjNuevo);
+        double promGoles = this.promedioGolesPorPartido(golesNuevo, pjNuevo);
+        double promAsist = this.promedioAsistenciasPorPartido(asistNuevo, pjNuevo);
        
         jugadorNuevo.setNombreCompleto(nombreNuevo);
         jugadorNuevo.setEdad(edadNuevo);
@@ -61,8 +66,8 @@ public class JugadorService implements IJugadorService {
         jugadorNuevo.setPartidosJugados(pjNuevo);
         jugadorNuevo.setGoles(golesNuevo);
         jugadorNuevo.setAsistencias(asistNuevo);
-        jugadorNuevo.setGolesPorPJ(promJug);
-        jugadorNuevo.setAsistPorPJ(asistPorPJNuevo);
+        jugadorNuevo.setGolesPorPJ(promGoles);
+        jugadorNuevo.setAsistPorPJ(promAsist);
         jugadorNuevo.setAñoDebut(añoDebutNuevo);
         jugadorNuevo.setNacionalidad(nacionalidadNuevo);
         jugadorNuevo.setPartidosSeleccion(PartidosSeleccionNuevo);
@@ -81,6 +86,15 @@ public class JugadorService implements IJugadorService {
     if (partidosJugados == 0) {
         return 0;
     } return (double) goles / partidosJugados;
+    
 }
+
+    @Override
+    public double promedioAsistenciasPorPartido(int asist, int partidosJugados) {
+        
+    if (partidosJugados == 0) {
+        return 0;
+    } return (double)asist / partidosJugados;
+    }
 }
     

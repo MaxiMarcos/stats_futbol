@@ -4,6 +4,7 @@
  */
 package com.futboldatos.jugadores.service;
 
+import com.futboldatos.jugadores.dto.JugadorDTO;
 import com.futboldatos.jugadores.model.Equipo;
 import java.util.List;
 

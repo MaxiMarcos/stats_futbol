@@ -4,7 +4,7 @@
  */
 package com.futboldatos.jugadores.controller;
 
-// import com.futboldatos.jugadores.dto.JugadorDTO;
+
 import com.futboldatos.jugadores.model.Equipo;
 import com.futboldatos.jugadores.model.Jugador;
 import com.futboldatos.jugadores.service.IEquipoService;
@@ -76,6 +76,7 @@ public class EquipoController {
     public ResponseEntity <String> crearJugador(@RequestBody Jugador jugador) {
         
         jugador.setGolesPorPJ(0);
+        jugador.setAsistPorPJ(0);
         
         jugadorServ.crearJugador(jugador);
         return new ResponseEntity<>("El jugador fue creado exitosamente", HttpStatus.OK);
@@ -102,8 +103,8 @@ public class EquipoController {
             @RequestParam(required=false, name = "partidosJugados")int pjNuevo,
             @RequestParam(required=false, name = "goles")int golesNuevo,
             @RequestParam(required=false, name = "asistencias")int asistNuevo,
-            @RequestParam(required=false, name = "golesPorPJ")double golesPorPJNuevo,
-            @RequestParam(required=false, name= "asistPorPJ") double asistPorPJNuevo,
+            //@RequestParam(required=false, name = "golesPorPJ")double golesPorPJNuevo,
+           //@RequestParam(required=false, name= "asistPorPJ") double asistPorPJNuevo,
             @RequestParam(required=false, name = "añoDebut") int añoDebutNuevo,
             @RequestParam(required=false, name = "nacionalidad")String nacionalidadNuevo,
             @RequestParam(required=false, name = "partidosSeleccion")int partidosSeleccionNuevo) {
@@ -114,28 +115,5 @@ public class EquipoController {
         
     }
     
-    /*   
-    @GetMapping ("/estadistica/{id}") // lo que podrá ver el cliente
-    public JugadorDTO devolverDTO(@PathVariable Long id) {
-        
-        Jugador jugador = jugadorServ.buscarJugador(id);
-        Equipo equipo = equipoServ.buscarEquipo(id);
-        
-        JugadorDTO jugDto = new JugadorDTO();
-        
-        jugDto.setId_jug(jugador.getId_jug());
-        jugDto.setNombreCompleto(jugador.getNombreCompleto());
-        jugDto.setAsistPorPJ(jugador.getAsistPorPJ());
-        jugDto.setGolesPorPJ(jugador.getGolesPorPJ());
-        jugDto.setAsistencias(jugador.getAsistencias());
-        jugDto.setGoles(jugador.getGoles());
-        jugDto.setEdad(jugador.getEdad());
-        jugDto.setPartidosJugados(jugador.getPartidosJugados());
-        jugDto.setEquipo(equipo.getNombre());
-        jugDto.setNacionalidad(jugador.getNacionalidad());
-        
-        
-        return jugDto;  
-    } */
     
 }

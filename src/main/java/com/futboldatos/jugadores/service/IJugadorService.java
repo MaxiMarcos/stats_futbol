@@ -20,6 +20,7 @@ public interface IJugadorService {
                             double golesPorPJNuevo, double asistPorPJNuevo, int añoDebutNuevo, String nacionalidadNuevo, int partidosSeleccionNuevo);
    public Jugador buscarJugador(Long id);
    public double promedioGolesPorPartido(int goles, int partidosJugados);
+   public double promedioAsistenciasPorPartido(int asist, int partidosJugados);
     
     
 }
