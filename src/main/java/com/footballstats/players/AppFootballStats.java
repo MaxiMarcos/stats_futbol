@@ -1,13 +1,13 @@
-package com.futboldatos.jugadores;
+package com.footballstats.players;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-public class AppEstadisticasFutbol {
+public class AppFootballStats {
 
 	public static void main(String[] args) {
-		SpringApplication.run(AppEstadisticasFutbol.class, args);
+		SpringApplication.run(AppFootballStats.class, args);
 	}
 
 }
