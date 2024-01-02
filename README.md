@@ -1,9 +1,8 @@
-# Datos en el fútbol
+# Data about football
 
-Este es un proyecto (el primero que hago con Spring Boot) que, tendrá como funcionalidad principal, gestionar datos y estadísticas de jugadores de futbol.
+"This is a project that will have as its main functionality to manage data and statistics of football players.
 
-Consta de dos entidades, "equipos" y "jugador", las cuales están relacionadas de manera "OneToMany". Cuando creamos y cargamos un equipo en  la BD, tendremos la posibilidad de asignarle en una lista diferentes jugadores existentes en la otra entidad. De la misma manera existen las demás opciones que nos da el CRUD: Leer, editar y eliminar
-
+It consists of two entities, 'teams' and 'player', which are related. When we create and load a team into the database, we will have the possibility to assign players existing in the other entity. Similarly, there are other options provided by the CRUD: Read, edit, and delete (teams and players)."
 
 <h2>Tech Stack</h2>
 <a href="https://docs.oracle.com/en/java/">Java</a> <br>

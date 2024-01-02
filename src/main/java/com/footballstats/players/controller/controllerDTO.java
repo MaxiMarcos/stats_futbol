@@ -1,7 +1,7 @@
 
 package com.footballstats.players.controller;
 
-import com.footballstats.players.dto.PlayerDTO;
+import com.footballstats.players.dto.PlayerTeamDTO;
 import com.footballstats.players.model.Team;
 import com.footballstats.players.model.Player;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -27,7 +27,7 @@ public class ControllerDTO {
     //Esto debe ir en vista html
     
     @GetMapping ("/estadistica/{id}")
-    public ResponseEntity<PlayerDTO> prueba(@PathVariable Long id){
+    public ResponseEntity<PlayerTeamDTO> prueba(@PathVariable Long id){
 
 
         Player player = jugadorServ.findPlayer(id);
@@ -38,7 +38,7 @@ public class ControllerDTO {
         //double goalsAverage = this.promedioGolesPorPartido(player.getGoals(), player.getGames());
         
         
-        PlayerDTO jugDto = new PlayerDTO();
+        PlayerTeamDTO jugDto = new PlayerTeamDTO();
         
         jugDto.setId_jug(player.getId_jug());
         jugDto.setName(player.getName());

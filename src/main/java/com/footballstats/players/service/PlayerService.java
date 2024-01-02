@@ -5,6 +5,7 @@
 package com.footballstats.players.service;
 
 
+import com.footballstats.players.dto.EditPlayerDTO;
 import com.footballstats.players.model.Player;
 import java.util.List;
 import java.util.Optional;
@@ -52,24 +53,24 @@ public class PlayerService implements IPlayerService {
     }
 
     @Override
-    public void editPlayer(Long idOriginal, String newName, String newPosition, int newAge, int newGames, int newGoals, int newAssist, int newFirstGame, String newNationality, int newGamesNationalTeam) {
+    public void editPlayer(Long idOriginal, EditPlayerDTO playerDTO) {
         
         Player newPlayer = this.findPlayer(idOriginal);
         
         double newGoalsAverage = this.goalsAverage(newPlayer.getGoals(), newPlayer.getGames());
         double newAssistAverage = this.assistAverage(newPlayer.getAssist(), newPlayer.getGames());
        
-        newPlayer.setName(newName);
-        newPlayer.setAge(newAge);
-        newPlayer.setPosition(newPosition);
-        newPlayer.setGames(newGames);
-        newPlayer.setGoals(newGoals);
-        newPlayer.setAssist(newAssist);
+        newPlayer.setName(playerDTO.getName());
+        newPlayer.setAge(playerDTO.getAge());
+        newPlayer.setPosition(playerDTO.getPosition());
+        newPlayer.setGames(playerDTO.getGames());
+        newPlayer.setGoals(playerDTO.getGoals());
+        newPlayer.setAssist(playerDTO.getAssist());
         newPlayer.setGoalsAverage(newGoalsAverage);
         newPlayer.setAssistAverage(newAssistAverage);
-        newPlayer.setFirstGame(newFirstGame);
-        newPlayer.setNationality(newNationality);
-        newPlayer.setGameNationalTeam(newGamesNationalTeam);
+        newPlayer.setFirstGame(playerDTO.getFirstGame());
+        newPlayer.setNationality(playerDTO.getNationality());
+        newPlayer.setGameNationalTeam(playerDTO.getGameNationalTeam());
         
         this.createPlayer(newPlayer);
     }

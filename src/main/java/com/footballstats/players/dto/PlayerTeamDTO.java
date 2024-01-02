@@ -11,7 +11,7 @@ import lombok.Setter;
 
 @Getter @Setter
 @Entity
-public class PlayerDTO {
+public class PlayerTeamDTO {
     @Id
     @GeneratedValue(strategy=GenerationType.SEQUENCE)
     private Long id_jug;
@@ -25,10 +25,10 @@ public class PlayerDTO {
     private String nationality;
     private String team;
 
-    public PlayerDTO () {
+    public PlayerTeamDTO () {
     }
 
-    public PlayerDTO(Long id_jug, String name, int age, int games, int goals, int assist, double goalsAverage, double assistAverage, String nationality, String team) {
+    public PlayerTeamDTO(Long id_jug, String name, int age, int games, int goals, int assist, double goalsAverage, double assistAverage, String nationality, String team) {
         this.id_jug = id_jug;
         this.name = name;
         this.age = age;

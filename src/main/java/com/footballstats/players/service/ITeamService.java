@@ -4,7 +4,7 @@
  */
 package com.footballstats.players.service;
 
-import com.footballstats.players.dto.PlayerDTO;
+import com.footballstats.players.dto.PlayerTeamDTO;
 import com.footballstats.players.model.Team;
 import java.util.List;
 
