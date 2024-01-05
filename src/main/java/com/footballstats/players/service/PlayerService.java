@@ -1,7 +1,4 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
+
 package com.footballstats.players.service;
 
 
@@ -12,11 +9,9 @@ import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import com.footballstats.players.repository.IPlayerRepository;
+import java.util.ArrayList;
 
-/**
- *
- * @author Usuario
- */
+
 @Service
 public class PlayerService implements IPlayerService {
 
@@ -81,6 +76,63 @@ public class PlayerService implements IPlayerService {
         return player;
     }
 
+    @Override
+    public List<Player> getPlayersWithHighGoalsAverage() {
+    List<Player> allPlayers = jugadorRepo.findAll();
+    List<Player> playersWithHighGoalsAverage = new ArrayList<>();
+
+    for (Player player : allPlayers) {
+        if (player.getGoalsAverage() >= 0.4) {
+            playersWithHighGoalsAverage.add(player);
+        }
+    }
+
+    return playersWithHighGoalsAverage;
+}
+    
+    @Override
+    public List<Player> getPlayersWithLowAssistAverage() {
+    List<Player> allPlayers = jugadorRepo.findAll();
+    List<Player> playersWithLowAssistAverage = new ArrayList<>();
+
+    for (Player player : allPlayers) {
+        if (player.getAssistAverage() >= 0.4) {
+            playersWithLowAssistAverage.add(player);
+        }
+    }
+
+    return playersWithLowAssistAverage;
+}
+    
+    @Override
+    public List<Player> getAttackingPlayers() {
+        List<Player> allPlayers = jugadorRepo.findAll();
+        List<Player> attackingPlayers = new ArrayList<>();
+        
+        for(Player player : allPlayers) {
+            
+            if("Defensor".equals(player.getPosition())) {
+                attackingPlayers.add(player);
+            }
+        }
+        return attackingPlayers;
+    }
+
+    @Override
+    public List<Player> getDefensePlayers() {
+        List<Player> allPlayers = jugadorRepo.findAll();
+        List<Player> defensePlayers = new ArrayList<>();
+        
+        for(Player player : allPlayers) {
+            
+            if("Defensor".equals(player.getPosition())) {
+                defensePlayers.add(player);
+            }
+        }
+        return defensePlayers;
+    }
+    
+    
     @Override
     public double goalsAverage(int goals, int games) {
     if (games == 0) {

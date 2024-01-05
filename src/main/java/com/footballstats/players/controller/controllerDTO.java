@@ -8,13 +8,11 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import com.footballstats.players.service.ITeamService;
 import com.footballstats.players.service.IPlayerService;
 
 @RestController
-@RequestMapping("/api")
 public class ControllerDTO {
     
         
@@ -32,14 +30,9 @@ public class ControllerDTO {
 
         Player player = jugadorServ.findPlayer(id);
         Team team = equipoServ.findTeam(id);
-        
-        //double assistAverage = this.promedioAsistenciasPorPartido(player.getAssist(), player.getGames());
-        
-        //double goalsAverage = this.promedioGolesPorPartido(player.getGoals(), player.getGames());
-        
-        
+
         PlayerTeamDTO jugDto = new PlayerTeamDTO();
-        
+
         jugDto.setId_jug(player.getId_jug());
         jugDto.setName(player.getName());
         jugDto.setAssistAverage(player.getAssistAverage());
@@ -50,21 +43,10 @@ public class ControllerDTO {
         jugDto.setGames(player.getGames());
         jugDto.setTeam(team.getName());
         jugDto.setNationality(player.getNationality());
-
-         return ResponseEntity.ok(jugDto);
-    }
-     
-     
-    /* (public double promedioGolesPorPartido(int goles, int partidosJugados) {
-    if (partidosJugados == 0) {
-        return 0;
-    } return (double) goles / partidosJugados;
-    }
-    
-    public double promedioAsistenciasPorPartido(int asist, int partidosJugados) {
         
-    if (partidosJugados == 0) {
-        return 0;
-    } return (double)asist / partidosJugados;
-    } */
+         return ResponseEntity.ok(jugDto);
+         
+    }
+     
+     
 }

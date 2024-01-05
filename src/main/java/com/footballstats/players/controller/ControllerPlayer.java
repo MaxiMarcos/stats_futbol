@@ -37,17 +37,17 @@ public class ControllerPlayer {
         }
     }
     
-    @GetMapping("/players/{id}")
+    
+   @GetMapping("/players/{id}")
     public ResponseEntity<Player> findPlayer(@PathVariable Long id) {
-        
-        Player player = jugadorServ.findPlayer(id);
-          if (player!=null) {
-            return new ResponseEntity<>(HttpStatus.NO_CONTENT);
-        } else {
-            return new ResponseEntity<>(player, HttpStatus.OK);
-        }
-        
+    Player player = jugadorServ.findPlayer(id);
+    if (player != null) {
+        return new ResponseEntity<>(player, HttpStatus.OK);
+    } else {
+        return new ResponseEntity<>(HttpStatus.NOT_FOUND);
     }
+}
+    
     
     @PostMapping ("/players") 
     public ResponseEntity <String> createPlayer(@RequestBody Player player) {
