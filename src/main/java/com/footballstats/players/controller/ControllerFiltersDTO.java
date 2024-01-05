@@ -18,7 +18,7 @@ public class ControllerFiltersDTO {
        
     
     
-    @GetMapping("/players/position/goalsaverage")
+    @GetMapping("/players/goalsaverage")
     public ResponseEntity<List<Player>> getPlayersForGoals() {
         List<Player> players = jugadorServ.getPlayersWithHighGoalsAverage();
 
@@ -31,7 +31,7 @@ public class ControllerFiltersDTO {
     
     @GetMapping("/players/assistaverage")
     public ResponseEntity<List<Player>> getPlayersForAssist() {
-        List<Player> players = jugadorServ.getPlayersWithLowAssistAverage();
+        List<Player> players = jugadorServ.getPlayersWithHighAssistAverage();
 
         if (players.isEmpty()) {
             return new ResponseEntity<>(HttpStatus.NO_CONTENT);

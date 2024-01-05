@@ -16,7 +16,7 @@ public interface IPlayerService {
    public double goalsAverage(int goals, int games);
    public double assistAverage(int assist, int games);
    public List<Player> getPlayersWithHighGoalsAverage();
-   public List<Player> getPlayersWithLowAssistAverage();
+   public List<Player> getPlayersWithHighAssistAverage();
    public List<Player> getAttackingPlayers();
    public List<Player> getDefensePlayers();
 }

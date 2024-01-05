@@ -91,17 +91,17 @@ public class PlayerService implements IPlayerService {
 }
     
     @Override
-    public List<Player> getPlayersWithLowAssistAverage() {
+    public List<Player> getPlayersWithHighAssistAverage() {
     List<Player> allPlayers = jugadorRepo.findAll();
-    List<Player> playersWithLowAssistAverage = new ArrayList<>();
+    List<Player> playersWithHighAssistAverage = new ArrayList<>();
 
     for (Player player : allPlayers) {
         if (player.getAssistAverage() >= 0.4) {
-            playersWithLowAssistAverage.add(player);
+            playersWithHighAssistAverage.add(player);
         }
     }
 
-    return playersWithLowAssistAverage;
+    return playersWithHighAssistAverage;
 }
     
     @Override
