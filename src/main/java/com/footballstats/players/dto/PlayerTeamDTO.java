@@ -1,4 +1,3 @@
-
 package com.footballstats.players.dto;
 
 import jakarta.persistence.Entity;

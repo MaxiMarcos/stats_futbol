@@ -4,6 +4,7 @@ package com.footballstats.players;
 import com.footballstats.players.model.Player;
 import com.footballstats.players.repository.IPlayerRepository;
 import com.footballstats.players.service.PlayerService;
+import java.util.ArrayList;
 import java.util.List;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.AfterAll;
@@ -13,6 +14,8 @@ import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.*;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
+import static org.mockito.Mockito.times;
+import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
 import org.springframework.boot.test.context.SpringBootTest;
 
@@ -56,4 +59,14 @@ public class PlayerServiceTest {
         
         assertEquals(players,result);
     } 
+    
+    public void createPlayer(Player player) {
+        
+        when(jugadorRepoMock.save(player)).thenReturn(player);
+     
+        playerService.createPlayer(player);
+   
+        verify(jugadorRepoMock, times(1)).save(player);
+       
+    }
 }

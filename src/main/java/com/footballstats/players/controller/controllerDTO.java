@@ -47,6 +47,5 @@ public class ControllerDTO {
          return ResponseEntity.ok(jugDto);
          
     }
-     
-     
+    
 }
