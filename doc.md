@@ -1,5 +1,5 @@
 <h2>Documentation:<h2> 
-[Swagger UI] http://localhost:tupuerto/swagger-ui/.
+[Swagger UI] http://localhost:tupuerto/swagger-ui/index.html
 
 ### Instructions:
 
